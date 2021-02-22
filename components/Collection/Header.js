@@ -1,19 +1,38 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {RiArrowDownSFill} from "react-icons/ri";
-export default function Header() {
+export default function Header(props) {
+    const [value, setValue] = useState("")
+    const [name, setName] = useState("")
+    const onChange = (val) => {
+        setValue(val)
+        props.setSort(val)
+        console.log("changing", val)
+    }
+    useEffect(() => {
+        if(props.name === "HomeImprovement"){
+            setName("Home Improvement")
+        } else if(props.name === "BedNBath"){
+            setName("Bed & Bath")
+        } else {
+            setName(props.name)
+        }
+    }, [props.name])
   return (
     <Wrapper >
-      <Title>Featured Brands</Title>
+      <Title>{name}</Title>
       <Sort>
           <Subtitle>Sort by:</Subtitle>
-          <DropSelector>
-              <Option>On Sale</Option>
-              <RiArrowDownSFill />
-              <Dropdown>
-                  <DropdownItem>On Sale</DropdownItem>
-              </Dropdown>
-          </DropSelector>
+          <Container>
+          <Select value={value} onChange={(event) => onChange(event.target.value)} >
+          <Option >Select</Option>
+
+                  <Option >Price Low - High</Option>
+                  <Option >Price High - Low</Option>
+                  <Option >Best Selling</Option>
+
+          </Select>
+          </Container>
       </Sort>
     </Wrapper>
   );
@@ -27,6 +46,7 @@ const Wrapper = styled.div`
   /* margin-top: ${(props) => (props.First ? "125px" : "0px")}; */
   margin-bottom: 30px;
   margin-top: 30px;
+  flex-direction: column;
 `;
 
 const Title = styled.h1`
@@ -42,49 +62,57 @@ const Sort = styled.div`
 width: 100%;
 justify-content: flex-end;
 margin-bottom: 30px;
-
+display: flex;
+align-items: center;
+margin-top: 15px;
 `
 
 const Subtitle = styled.p`
-
+margin-right: 20px;
 `
 
-const DropSelector = styled.div`
-    -webkit-align-items: center;
-    align-items: center;
-    border-radius: 4px;
-    border: none;
+const Select = styled.select`
+    font-size: 14px;
+    height: 34px;
+
     color: #2f3337;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+    line-height: 1;
     min-width: 150px;
+    position: relative;
+    text-align: left;
     padding: 0 16px;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 90%;
-    z-index: 3;
+    border-radius: 4px;
 
     border: 1px solid #dadcdf;
-    border-radius: 4px;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    padding: 0 0 0 8px;
-    position: absolute;
-    right: 0;
-    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 `
 
-const Option = styled.span`
+const Option = styled.option`
+    font-size: 14px;
+    height: 34px;
 
+    color: #2f3337;
+    line-height: 1;
+    /* min-width: 150px; */
+    position: relative;
+    text-align: left;
+    padding: 0 16px;
+
+    border: 1px solid #dadcdf;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    :hover{
+        background-color: #dadcdf;
+        outline:0 !important;
+        background: #f00; color: #fff; box-shadow: inset 20px 20px #f00;
+    }
+    :focus {outline:0 !important;}
 `
 
-const Dropdown = styled.div`
-
-`
-
-const DropdownItem = styled.a`
-
+const Container = styled.div`
+position: relative;
 `

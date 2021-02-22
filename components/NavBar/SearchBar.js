@@ -43,12 +43,15 @@ export default function SearchBar() {
 const Wrapper = Styled.div`
     width:100%;
     height:34px;
-    margin-right: 12px;
+    margin-right: 2px;
     display:flex;
     justify-content:center;
     align-items:center;
     font-family: 'Helvetica', 'Arial', sans-serif;
     position: relative;
+    @media ${(props) => props.theme.mobileS} {
+        margin-right: 12px;
+}
 `;
 
 const Search = Styled.input`
@@ -76,10 +79,13 @@ const Button = Styled.button`
     font-size: 30px;
     position: absolute;
     right: 0;
+    display: none;
     @media ${(props) => props.theme.mobileL} {
         background-color: #ff1f2c;
         color: white;
-
+}
+@media ${(props) => props.theme.mobileS} {
+        display: flex;
 }
     /* outline: 2px solid black; */
 `

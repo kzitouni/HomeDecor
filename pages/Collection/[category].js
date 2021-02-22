@@ -1,19 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import PageLayout from "../../components/PageLayout";
 import styled from "styled-components";
 import Header from "../../components/Collection/Header";
-
-export default function Collection() {
+import MainSection from '../../components/Collection/MainSection'
+export default function Collection({category}) {
+  const [sort, setSort] = useState("")
   return (
     <PageLayout>
         <Wrapper>
           <Container>
-            <Header />
+            <Header name={category} sort={sort} setSort={setSort} />
+            <MainSection name={category} sort={sort} />
           </Container>
         </Wrapper>
     </PageLayout>
   );
 }
+Collection.getInitialProps = ({ query: { category } }) => {
+  return { category };
+};
 const MainCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,7 +37,10 @@ const Wrapper = styled.div`
     justify-content:center;
     align-items:center;
     font-family: 'Open Sans', sans-serif;
-    margin-top: 140px;
+    margin-top: 40px;
+    @media ${(props) => props.theme.tabletL} {
+    margin-top: 80px;
+  }
     /* @media ${(props) => props.theme.laptop} {
     padding-top: ${props => props.first === true ? "180px" : "120px"};
   }

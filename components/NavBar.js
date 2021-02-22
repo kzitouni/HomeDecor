@@ -80,7 +80,7 @@ const closeMenu = () => {
           <NavOption type="cart" isTablet={isTablet} isMobile={isMobile} />
       </Options>
       </Container>
-      <NavCategories />
+      {/* <NavCategories /> */}
       {/* </NavsWrapper> */}
     </Wrapper>
   );
@@ -96,6 +96,8 @@ const Wrapper = Styled.div`
     background-color:white;
     /* background: green; */
     max-width: 1680px;
+    z-index: 1;
+    /* margin: 0 auto; */
     @media ${(props) => props.theme.tabletL} {
     height: unset;
   }
