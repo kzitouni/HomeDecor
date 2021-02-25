@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
-import {
-  BsSearch,
-  BsFillTagFill,
-  BsFillPersonFill,
-  BsBell,
-} from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
-import Hamburger from "hamburger-react";
 
 export default function MenuItem(props) {
-
   return (
-    <Wrapper href={props.href} >
-        <Title>
-            {props.name}
-        </Title>
-        <Icon>
+    <Wrapper href={props.href}>
+      <Title>{props.name}</Title>
+      <Icon>
         <RiArrowRightSLine />
-        </Icon>
+      </Icon>
     </Wrapper>
   );
 }
@@ -26,8 +16,6 @@ const Wrapper = Styled.a`
   width: 100%;
     justify-content: space-between;
     align-items: center;
-    /* padding-left: 25px;
-    padding-right: 25px; */
     border-bottom: 1px solid #dadcdf;
     background-color: #f9fafb;
     font-weight: 500;
@@ -44,19 +32,19 @@ display: flex;
 align-items: center;
 font-size: 15px;
 padding-left: 25px;
-`
+`;
 
 const Icon = Styled.div`
 padding-right: 20px;
-`
+`;
 
 const Logo = Styled.img`
 width: 25px;
-`
+`;
 
 const MenuContainer = Styled.div`
   height: 100%;
-  width: ${props => props.open ? "300px" : "0px"};
+  width: ${(props) => (props.open ? "300px" : "0px")};
   position: fixed;
   z-index: 3;
   top: 0;
@@ -70,7 +58,7 @@ const MenuContainer = Styled.div`
 
 const Close = Styled.a`
 
-`
+`;
 
 const Overlay = Styled.div`
 width: 100%;
@@ -78,8 +66,8 @@ height: 100vh;
 position: absolute;
 z-index:2;
 background-color: rgba(0, 0, 0, 0.3);
-display: ${props => props.open ? "flex" : "none"};
-`
+display: ${(props) => (props.open ? "flex" : "none")};
+`;
 
 const Search = Styled.input`
     border: 1px solid #dadcdf;
@@ -90,7 +78,7 @@ const Search = Styled.input`
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-`
+`;
 
 const Button = Styled.button`
     background-color: #ff1f2c;
@@ -105,7 +93,7 @@ const Button = Styled.button`
     color: white;
     font-size: 30px;
     /* outline: 2px solid black; */
-`
+`;
 
 const TitleRow = Styled.div`
     width: 100%;
@@ -120,5 +108,4 @@ const TitleRow = Styled.div`
     height: 60px;
     align-items: center;
     display: flex;
-`
-
+`;

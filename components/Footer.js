@@ -1,148 +1,118 @@
 import React from "react";
-import Styled from "styled-components";
+import styled from "styled-components";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <Wrapper>
       <Container>
-        <FooterLinks>
-          <Column>
-            <ColumnTitle>MY ACCOUNT</ColumnTitle>
-            <LinkDiv>
-              <Link>Orders and Returns</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>My Reviews</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Account Settings</Link>
-            </LinkDiv>
-          </Column>
-          <Column>
-            <ColumnTitle>LET US HELP</ColumnTitle>
-            <LinkDiv>
-              <Link>Customer Service</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Shipping Information</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Accessibility</Link>
-            </LinkDiv>
-          </Column>
-          <Column>
-            <ColumnTitle>COMPANY INFORMATION</ColumnTitle>
-            <LinkDiv>
-              <Link>About</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Careers</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>NewsRoom</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Equity</Link>
-            </LinkDiv>
-          </Column>
-          <Column>
-            <ColumnTitle>SHOPPING</ColumnTitle>
-            <LinkDiv>
-              <Link>Overstock Coupons</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Deals</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>Clearance</Link>
-            </LinkDiv>
-            <LinkDiv>
-              <Link>New Arrivals</Link>
-            </LinkDiv>
-          </Column>
-        </FooterLinks>
-        <LegalInfo>
-          <CopyRight>
-            © Copyright 2021, Overstock Inc. All Rights Reserved
-          </CopyRight>
-          <Info>
-            <InfoLink>Privacy Policy</InfoLink>
-            <InfoLink>Terms and Conditions</InfoLink>
-            <InfoLink>Promotional Terms</InfoLink>
-          </Info>
-        </LegalInfo>
+        <UpperHalf>
+          <Col1>
+            <H2>Home Decor®</H2>
+            <P>
+              Shop and find the best online deals on everything for your home.
+              We work every day to bring you discounts on new products across
+              our entire store. Whether you're looking for memorable gifts or
+              everyday essentials, you can buy them here for less.
+            </P>
+          </Col1>
+          <Col2>
+            <InnerDiv1>
+              <H1>We Save People Money®</H1>
+              <H1>All Things Home All For Less™</H1>
+              <H1>Shop Social®</H1>
+              <H1>Daily Dig®</H1>
+            </InnerDiv1>
+            <InnerDiv2>
+              <H1>Trusted Merchant®</H1>
+              <H1>O is the One®</H1>
+              <H1>O’®</H1>
+              <H1>Presa®</H1>
+            </InnerDiv2>
+          </Col2>
+        </UpperHalf>
+        <LowerHalf>
+          © Copyright 2021, Home Decor Inc. All Rights Reserved
+        </LowerHalf>
       </Container>
     </Wrapper>
   );
-}
-const Wrapper = Styled.div`
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:#444;
-    color:white;
-    font-family: 'Helvetica', 'Arial', sans-serif;
+};
+export default Footer;
+
+const Wrapper = styled.div`
+  width: 100%;
+  background-color: #444;
+  flex-direction: column;
+  color: white;
+  line-height: 1.2;
 `;
-
-const Container = Styled.div`
-    width:90%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+const Container = styled.div`
+  justify-content: space-between;
+  margin: 60px 25px;
+  height: 100%;
+  flex-direction: column;
+  @media ${(props) => props.theme.tablet} {
+    margin: 60px 105px;
+  }
 `;
-
-const FooterLinks = Styled.div`
-    width:100%;
-    height:80%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:row;
+const UpperHalf = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media ${(props) => props.theme.tablet} {
+    flex-direction: row;
+  }
 `;
-
-const Column = Styled.div`
-    width:25%;
-    height:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+const Col1 = styled.div`
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 30px;
+  @media ${(props) => props.theme.tablet} {
+    width: 47%;
+    margin-bottom: 0px;
+  }
 `;
-
-const ColumnTitle = Styled.div`
-    padding:20px;
-    font-weight:600;
+const H2 = styled.h2`
+  font-size: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 12px;
 `;
-
-const LinkDiv = Styled.div`
-    padding:20px;
+const P = styled.p`
+  line-height: 1.5;
+  font-size: 12px;
+  width: 70%;
 `;
-
-const Link = Styled.a`
-    
+const Col2 = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  @media ${(props) => props.theme.tablet} {
+    width: 50%;
+    margin-bottom: 0px;
+  }
 `;
-
-const LegalInfo = Styled.div`
-    width:100%;
-    height:20%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-top:100px;
+const InnerDiv1 = styled.div`
+  width: 47%;
+  display: flex;
+  flex-direction: column;
 `;
-
-const CopyRight = Styled.div`
-    padding:25px;
+const InnerDiv2 = styled.div`
+  width: 47%;
+  display: flex;
+  flex-direction: column;
 `;
-
-const Info = Styled.div`
-
+const H1 = styled.h1`
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin-bottom: 16px;
 `;
-
-const InfoLink = Styled.a`
-    padding:25px;
+const LowerHalf = styled.h2`
+  display: flex;
+  justify-content: space-between;
+  background-color: #444;
+  color: white;
+  font-size: 16px;
 `;

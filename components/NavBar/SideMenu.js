@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
-import {
-  BsSearch,
-  BsFillTagFill,
-  BsFillPersonFill,
-  BsBell,
-} from "react-icons/bs";
-import { AiOutlineClose } from "react-icons/ai";
-import Hamburger from "hamburger-react";
 import MenuItem from "./MenuItem";
 
 export default function SideMenu(props) {
-
   return (
     <Wrapper open={props.isOpen}>
-        <MenuContainer open={props.isOpen}>
+      <MenuContainer open={props.isOpen}>
         <LogoRow onClick={() => props.onClose()}>
-            <Logo src="/Overstock_WhiteIcon.svg" />
+          <Logo src="/WhiteLogo.svg" />
         </LogoRow>
-        <TitleRow>
-            Categories
-        </TitleRow>
-        <MenuItem name="Furniture" href="/Furniture" />
-        </MenuContainer>
-        <Overlay open={props.isOpen} onClick={() => props.onClose()} />
-        {
-            props.isOpen &&         <style global jsx>{`
-            body {
-              overflow: hidden;
-            }
-          `}</style>
-        }
-
+        <TitleRow>Categories</TitleRow>
+        <MenuItem name="Bed & Bath" href="/category?type=BedNBath" />
+        <MenuItem name="Kitchen" href="/category?type=Kitchen" />
+        <MenuItem name="Decor" href="/category?type=Decor" />
+        <MenuItem name="Rugs" href="/category?type=Rugs" />
+        <MenuItem
+          name="Home Improvement"
+          href="/category?type=HomeImprovement"
+        />
+      </MenuContainer>
+      <Overlay open={props.isOpen} onClick={() => props.onClose()} />
+      {props.isOpen && (
+        <style global jsx>{`
+          body {
+            overflow: hidden;
+          }
+        `}</style>
+      )}
     </Wrapper>
   );
 }
 const Wrapper = Styled.div`
   height: 100%;
-  width: ${props => props.open ? "100%" : "0px"};
+  width: ${(props) => (props.open ? "100%" : "0px")};
   position: fixed;
   z-index: 3;
   top: 0;
@@ -56,15 +51,15 @@ height: 45px;
 display: flex;
 align-items: center;
 padding-left: 15px;
-`
+`;
 
 const Logo = Styled.img`
 width: 25px;
-`
+`;
 
 const MenuContainer = Styled.div`
   height: 100%;
-  width: ${props => props.open ? "300px" : "0px"};
+  width: ${(props) => (props.open ? "300px" : "0px")};
   position: fixed;
   z-index: 3;
   top: 0;
@@ -78,7 +73,7 @@ const MenuContainer = Styled.div`
 
 const Close = Styled.a`
 
-`
+`;
 
 const Overlay = Styled.div`
 width: 100%;
@@ -86,9 +81,9 @@ height: 100vh;
 position: absolute;
 z-index:2;
 background-color: rgba(0, 0, 0, 0.3);
-display: ${props => props.open ? "flex" : "none"};
+display: ${(props) => (props.open ? "flex" : "none")};
 transition: 0s;
-`
+`;
 
 const Search = Styled.input`
     border: 1px solid #dadcdf;
@@ -99,7 +94,7 @@ const Search = Styled.input`
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-`
+`;
 
 const Button = Styled.button`
     background-color: #ff1f2c;
@@ -114,7 +109,7 @@ const Button = Styled.button`
     color: white;
     font-size: 30px;
     /* outline: 2px solid black; */
-`
+`;
 
 const TitleRow = Styled.div`
     width: 100%;
@@ -129,5 +124,4 @@ const TitleRow = Styled.div`
     height: 60px;
     align-items: center;
     display: flex;
-`
-
+`;

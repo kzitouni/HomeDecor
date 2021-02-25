@@ -1,38 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
-import {
-  BsSearch,
-  BsFillTagFill,
-  BsFillPersonFill,
-  BsBell,
-} from "react-icons/bs";
-import { BsChevronUp } from "react-icons/bs";
-import Hamburger from "hamburger-react";
-import DropdownItem from './DropdownItem'
-export default function NavCategories(props) {
-let categories = [
-    {"name": "Furniture"},
-    {"name": "Rugs"},
-    {"name": "Decor"},
-    {"name": "Bed & Bath"},
-    {"name": "Home Improvement"},
-    {"name": "Kitchen"},
-    {"name": "Outdoor"},
-    {"name": "Jewelry"},
-    {"name": "Apparel"},
-    {"name": "Kids & Baby"},
 
-]
+export default function NavCategories(props) {
+  let categories = [
+    { name: "Furniture" },
+    { name: "Rugs" },
+    { name: "Decor" },
+    { name: "Bed & Bath" },
+    { name: "Home Improvement" },
+    { name: "Kitchen" },
+    { name: "Outdoor" },
+    { name: "Jewelry" },
+    { name: "Apparel" },
+    { name: "Kids & Baby" },
+  ];
   return (
-    <Wrapper >
-        <Container>
-            {
-                categories.map((item, index) => {
-                    return <NavItem>{item.name}</NavItem>
-                })
-            }
-            
-        </Container>
+    <Wrapper>
+      <Container>
+        {categories.map((item) => (
+          <NavItem key={item.name}>{item.name}</NavItem>
+        ))}
+      </Container>
     </Wrapper>
   );
 }
@@ -65,7 +53,7 @@ const Container = Styled.div`
     justify-content:space-between;
     align-items:center;
     max-width: 1680px;
-`
+`;
 
 const NavItem = Styled.a`
     display: flex;
@@ -82,7 +70,7 @@ const NavItem = Styled.a`
     /* width: 100%; */
     height: auto;
     }
-`
+`;
 
 const Search = Styled.input`
     border: 1px solid #dadcdf;
@@ -93,7 +81,7 @@ const Search = Styled.input`
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-`
+`;
 
 const Button = Styled.button`
     background-color: transparent;
@@ -115,4 +103,4 @@ const Button = Styled.button`
 
 }
     /* outline: 2px solid black; */
-`
+`;
